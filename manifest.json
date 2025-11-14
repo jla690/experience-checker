@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "LinkedIn YOE Checker",
+    "version": "1.0",
+    "description": "Extracts years of experience from LinkedIn job posts",
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://www.linkedin.com/jobs/search-results/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    }
+}
