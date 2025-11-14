@@ -1,3 +1,3 @@
-document.getElementById("yoe").addEventListener("click", () => {
+document.getElementsByClassName("yoe-badge").addEventListener("click", () => {
     alert("Button clicked!");
 });
