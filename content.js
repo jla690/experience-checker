@@ -31,7 +31,7 @@ const yoe_check = () => {
 
             const title = document.querySelector("h1");
             if (title) {
-                title.append(badge)
+                title.append(badge);
             } else {
                 return;
             }
