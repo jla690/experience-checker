@@ -10,8 +10,9 @@ const yoe_check = () => {
         const cleaned = element.textContent
             .trim()
             .toLowerCase();
-        if ((rgx.test(cleaned) && cleaned.includes("experience")) || cleaned.includes("degree")) {
-            matches.push(cleaned);
+        
+        if ((rgx.test(cleaned) || cleaned.includes("degree") || cleaned.includes("students"))) {
+            matches.push(element.textContent.trim());
         }
     }
 
@@ -26,8 +27,8 @@ const yoe_check = () => {
             badge.style.background = "#e0f0ff";
             badge.style.fontSize = "12px";
             badge.style.fontWeight = "600";
-            badge.style.display = "inline-block";
-            badge.style.marginLeft = "8px";
+            badge.style.display = "block";
+            badge.style.marginBottom = "8px";
 
             const title = document.querySelector("h1");
             if (title) {
@@ -38,8 +39,6 @@ const yoe_check = () => {
         }
     }
 };
-
-yoe_check();
 
 const observer = new MutationObserver((mutations) => {
     clearTimeout(timer);
