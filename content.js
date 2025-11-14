@@ -44,6 +44,6 @@ yoe_check();
 const observer = new MutationObserver((mutations) => {
     clearTimeout(timer);
     timer = setTimeout(() => yoe_check(), 200);
-})
+});
 
 observer.observe(document.body, { childList: true, subtree: true });
