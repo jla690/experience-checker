@@ -36,7 +36,7 @@ const yoe_check = () => {
                 return;
             }
         }
-    };
+    }
 };
 
 yoe_check();
