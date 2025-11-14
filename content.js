@@ -10,6 +10,7 @@ const yoe_check = () => {
         const cleaned = element.textContent
             .trim()
             .toLowerCase();
+        
         if ((rgx.test(cleaned) || cleaned.includes("degree") || cleaned.includes("students"))) {
             matches.push(element.textContent.trim());
         }
