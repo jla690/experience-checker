@@ -2,6 +2,7 @@ const rgx = /\b(?:\d+\+?|one|two|three|four|five|six|seven|eight|nine|ten)\s+(?:
 let timer = null;
 
 const false_positives = ["benefits", "perks", "vacation", "maternity", "leave", "discounts"];
+let prev_description = "";
 
 const createBadge = (text) => {
     const badge = document.createElement("div");
@@ -16,7 +17,6 @@ const createBadge = (text) => {
     label.style.maxWidth = "550px";
 
     badge.style.display = "flex";
-    badge.style.alignItems = "center";
     badge.style.padding = "4px 8px";
     badge.style.marginBottom = "8px";
     badge.style.borderRadius = "6px";
@@ -32,10 +32,15 @@ const createBadge = (text) => {
 };
 
 const yoe_check = () => {
+    if (prev_description == document.body.innerText) {
+        return;
+    }
+    prev_description = document.body.innerText;
+
     document.querySelectorAll(".yoe-badge").forEach(b => b.remove());
     let matches = new Set();
     const paras = Array.from(document.querySelectorAll("p")).filter(p => {
-        return p.textContent.startsWith("•") || p.textContent.startsWith("*") || p.textContent.startsWith("✔️");
+        return p.textContent.startsWith("•") || p.textContent.startsWith("*") || p.textContent.startsWith("✔️") || p.textContent.startsWith("✅");
     });
     const li_arr = Array.from(document.querySelectorAll("li"));
 
