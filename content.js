@@ -42,9 +42,9 @@ const yoe_check = () => {
     const paras = Array.from(document.querySelectorAll("p")).filter(p => {
         return p.textContent.startsWith("•") || p.textContent.startsWith("*") || p.textContent.startsWith("✔️") || p.textContent.startsWith("✅");
     });
-    const li_arr = Array.from(document.querySelectorAll("li"));
+    const listItems = Array.from(document.querySelectorAll("li"));
 
-    const arr = [...li_arr, ...paras]
+    const arr = [...listItems, ...paras]
 
     for (const element of arr) {
         const cleaned = element.textContent
