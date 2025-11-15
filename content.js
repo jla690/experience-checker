@@ -50,7 +50,7 @@ const yoe_check = () => {
         const cleaned = element.textContent
             .trim();
         
-        if ((rgx.test(cleaned) || cleaned.includes("degree"))) {
+        if ((rgx.test(cleaned) || cleaned.toLocaleLowerCase().includes("degree"))) {
             matches.add(cleaned);
         }
     }
