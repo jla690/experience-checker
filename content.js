@@ -2,7 +2,7 @@ const rgx = /\b(?:\d+\+?|one|two|three|four|five|six|seven|eight|nine|ten)\s+(?:
 let timer = null;
 
 const false_positives = ["benefits", "perks", "vacation", "maternity", "leave", "discounts"];
-let prev_description = "";
+let prev_title = "";
 
 const createBadge = (text) => {
     const badge = document.createElement("div");
@@ -32,10 +32,12 @@ const createBadge = (text) => {
 };
 
 const yoe_check = () => {
-    if (prev_description === document.body.innerText) {
+    const title = document.querySelector("h1");
+
+    if (prev_title === title.textContent) {
         return;
     }
-    prev_description = document.body.innerText;
+    prev_title = title.textContent;
 
     document.querySelectorAll(".yoe-badge").forEach(b => b.remove());
     let matches = new Set();
@@ -44,7 +46,7 @@ const yoe_check = () => {
     });
     const listItems = Array.from(document.querySelectorAll("li"));
 
-    const arr = [...listItems, ...paras]
+    const arr = [...listItems, ...paras];
 
     for (const element of arr) {
         const cleaned = element.textContent
@@ -54,8 +56,6 @@ const yoe_check = () => {
             matches.add(cleaned);
         }
     }
-
-    const title = document.querySelector("h1");
 
     if (matches.size > 0) {
         for (const match of matches) {
