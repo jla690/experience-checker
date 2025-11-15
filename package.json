@@ -1,0 +1,25 @@
+{
+  "name": "experience-checker",
+  "version": "1.0.0",
+  "description": "Chrome extension to extract years of experience and degree requirements from job postings.",
+  "homepage": "https://github.com/jla690/experience-checker#readme",
+  "bugs": {
+    "url": "https://github.com/jla690/experience-checker/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jla690/experience-checker.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "content.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0"
+  }
+}

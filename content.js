@@ -1,41 +1,77 @@
-const rgx = /(?:\d+\+?|one|two|three|four|five|six|seven|eight|nine|ten)(?:\s+\w+){0,3}\s+year(?:s)?/i;
+const rgx = /\b(?:\d+\+?|one|two|three|four|five|six|seven|eight|nine|ten)\s+(?:\w+\s+){0,2}?years?\b/i;
 let timer = null;
 
+const false_positives = ["benefits", "perks", "vacation", "maternity", "leave", "discounts"];
+let prev_title = "";
+
+const createBadge = (text) => {
+    const badge = document.createElement("div");
+    badge.classList.add("yoe-badge");
+
+    const label = document.createElement("span");
+    label.textContent = text;
+    label.style.whiteSpace = "nowrap";
+    label.style.overflow = "hidden";
+    label.style.textOverflow = "ellipsis";
+    label.style.display = "inline-block";
+    label.style.maxWidth = "550px";
+
+    badge.style.display = "flex";
+    badge.style.padding = "4px 8px";
+    badge.style.marginBottom = "8px";
+    badge.style.borderRadius = "6px";
+    badge.style.border = "1px solid #c8d9ea";
+    badge.style.background = "#f7fbff";
+    badge.style.fontSize = "12px";
+    badge.style.fontWeight = "600";
+    badge.style.maxWidth = "550px";
+    badge.style.gap = "4px";
+
+    badge.append(label);
+    return badge;
+};
+
 const yoe_check = () => {
+    const title = document.querySelector("h1");
+
+    if (prev_title === title.textContent) {
+        return;
+    }
+    prev_title = title.textContent;
+
     document.querySelectorAll(".yoe-badge").forEach(b => b.remove());
-    let matches = [];
-    const arr = Array.from(document.querySelectorAll("li"));
+    let matches = new Set();
+    const paras = Array.from(document.querySelectorAll("p")).filter(p => {
+        return p.textContent.startsWith("•") || p.textContent.startsWith("*") || p.textContent.startsWith("✔️") || p.textContent.startsWith("✅");
+    });
+    const listItems = Array.from(document.querySelectorAll("li"));
+
+    const arr = [...listItems, ...paras];
 
     for (const element of arr) {
         const cleaned = element.textContent
-            .trim()
-            .toLowerCase();
+            .trim();
         
-        if ((rgx.test(cleaned) || cleaned.includes("degree") || cleaned.includes("students"))) {
-            matches.push(element.textContent.trim());
+        if ((rgx.test(cleaned) || cleaned.toLocaleLowerCase().includes("degree"))) {
+            matches.add(cleaned);
         }
     }
 
-    if (matches.length > 0) {
+    if (matches.size > 0) {
         for (const match of matches) {
-            const badge = document.createElement("div");
-            badge.textContent = match;
-            badge.classList.add("yoe-badge");
-            badge.style.padding = "4px 8px";
-            badge.style.transition = "opacity 0.2s";
-            badge.style.borderRadius = "8px";
-            badge.style.background = "#e0f0ff";
-            badge.style.fontSize = "12px";
-            badge.style.fontWeight = "600";
-            badge.style.display = "block";
-            badge.style.marginBottom = "8px";
+            const badge = createBadge(match);
 
-            const title = document.querySelector("h1");
             if (title) {
                 title.append(badge);
             } else {
                 return;
             }
+        }
+    }
+    else {
+        const badge = createBadge("Years or degree not found, please manually check");
+        if (title) {
+            title.append(badge);
         }
     }
 };
@@ -45,4 +81,4 @@ const observer = new MutationObserver((mutations) => {
     timer = setTimeout(() => yoe_check(), 200);
 });
 
-observer.observe(document.body, { childList: true, subtree: true });
+observer.observe(document.body, { childList: true, subtree: true, characterData: true });
