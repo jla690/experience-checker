@@ -47,7 +47,6 @@ const yoe_check = () => {
     const arr = [...li_arr, ...paras]
 
     for (const element of arr) {
-        rgx.lastIndex = 0;
         const cleaned = element.textContent
             .trim();
         
