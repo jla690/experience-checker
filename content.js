@@ -32,7 +32,7 @@ const createBadge = (text) => {
 };
 
 const yoe_check = () => {
-    if (prev_description == document.body.innerText) {
+    if (prev_description === document.body.innerText) {
         return;
     }
     prev_description = document.body.innerText;
