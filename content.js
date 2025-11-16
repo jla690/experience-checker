@@ -1,7 +1,7 @@
 const rgx = /\b(?:\d+\+?|one|two|three|four|five|six|seven|eight|nine|ten)\s+(?:\w+\s+){0,2}?years?\b/i;
 let timer = null;
 
-const false_positives = ["benefits", "perks", "vacation", "maternity", "leave", "discounts"];
+const false_positives = ["benefits", "perks", "vacation", "maternity", "leave", "discounts", "401k"];
 let prev_title = "";
 
 const createBadge = (text) => {
@@ -42,7 +42,7 @@ const yoe_check = () => {
     document.querySelectorAll(".yoe-badge").forEach(b => b.remove());
     let matches = new Set();
     const paras = Array.from(document.querySelectorAll("p")).filter(p => {
-        return p.textContent.startsWith("•") || p.textContent.startsWith("*") || p.textContent.startsWith("✔️") || p.textContent.startsWith("✅");
+        return p.textContent.startsWith("•") || p.textContent.startsWith("*") || p.textContent.startsWith("✔️") || p.textContent.startsWith("✅") || p.textContent.startsWith("-");
     });
     const listItems = Array.from(document.querySelectorAll("li"));
 
@@ -52,7 +52,7 @@ const yoe_check = () => {
         const cleaned = element.textContent
             .trim();
         
-        if ((rgx.test(cleaned) || cleaned.toLocaleLowerCase().includes("degree"))) {
+        if ((rgx.test(cleaned) || cleaned.toLowerCase().includes("degree")) && !false_positives.some(word => cleaned.toLowerCase().includes(word))) {
             matches.add(cleaned);
         }
     }
