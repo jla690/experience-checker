@@ -76,7 +76,7 @@ const yoe_check = () => {
     }
 };
 
-const observer = new MutationObserver((mutations) => {
+const observer = new MutationObserver((_mutations) => {
     clearTimeout(timer);
     timer = setTimeout(() => yoe_check(), 200);
 });

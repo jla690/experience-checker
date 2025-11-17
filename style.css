@@ -1,0 +1,20 @@
+.badge {
+    display: flex;
+    padding: 4px 8px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border: 1px solid #c8d9ea;
+    background: #f7fbff;
+    font-size: 12px;
+    font-weight: 600;
+    max-width: 550px;
+    gap: 4px;
+}
+
+.badge-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 550px;
+}
