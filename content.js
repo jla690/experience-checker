@@ -42,7 +42,7 @@ const yoe_check = () => {
     document.querySelectorAll(".yoe-badge").forEach(b => b.remove());
     let matches = new Set();
     const paras = Array.from(document.querySelectorAll("p")).filter(p => {
-        return p.textContent.startsWith("•") || p.textContent.startsWith("*") || p.textContent.startsWith("✔️") || p.textContent.startsWith("✅") || p.textContent.startsWith("-");
+        return p.textContent.startsWith("•") || p.textContent.startsWith("*") || p.textContent.startsWith("✔️") || p.textContent.startsWith("✅") || p.textContent.startsWith("-") || p.textContent.startsWith("·");
     });
     const listItems = Array.from(document.querySelectorAll("li"));
 
