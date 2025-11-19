@@ -1,7 +1,7 @@
 const rgx = /\b(?:\d+\+?|one|two|three|four|five|six|seven|eight|nine|ten)\s+(?:\w+\s+){0,2}?years?\b/i;
 let timer = null;
 
-const false_positives = ["benefits", "perks", "vacation", "maternity", "leave", "discounts", "401k"];
+const false_positives = ["benefits", "perks", "vacation", "maternity", "leave", "discounts", "401k", "allowance", "pension"];
 let prev_title = "";
 
 const createBadge = (text) => {
