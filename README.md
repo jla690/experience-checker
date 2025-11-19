@@ -1,4 +1,4 @@
-```markdown
+
 # Experience Checker
 
 Chrome extension that extracts years-of-experience and degree requirements from job postings to help quickly evaluate listings.
@@ -47,5 +47,3 @@ If the extension is published in the Chrome Web Store, install it directly from 
 
 ## Privacy
 All extraction runs locally in your browser. The extension does not send page content to external servers by default. If you plan to add telemetry or remote features, they will be documented and opt-in.
-
-```
