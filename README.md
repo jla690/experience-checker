@@ -35,11 +35,10 @@ If the extension is published in the Chrome Web Store, install it directly from 
 
 ## Usage
 1. Open a job posting in your browser.
-2. Click the Experience Checker extension icon (in the toolbar).
-3. The popup shows:
+2. The extension will automatically extract and display:
    - Extracted "Years of experience" (best guess)
    - Extracted "Degree requirements" (list of detected degrees)
-4. If results are missing or look wrong, open Developer Tools → Console for debug logs.
+3. If results are missing or look wrong, open Developer Tools → Console for debug logs.
 
 ## Troubleshooting
 - If nothing appears: ensure the extension is enabled and the job posting's text is visible (some sites render content with iframes or dynamically after load).
