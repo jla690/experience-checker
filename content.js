@@ -1,7 +1,7 @@
 const rgx = /\b(?:\d+\+?|one|two|three|four|five|six|seven|eight|nine|ten)\s+(?:\w+\s+){0,2}?years?\b/i;
 let timer = null;
 
-const false_positives = ["benefits", "perks", "vacation", "maternity", "leave", "discounts", "401k"];
+const false_positives = ["benefits", "perks", "vacation", "maternity", "leave", "discounts", "401k", "allowance", "pension"];
 let prev_title = "";
 
 const createBadge = (text) => {
@@ -44,7 +44,7 @@ const yoe_check = () => {
     const paras = Array.from(document.querySelectorAll("p")).filter(p => {
         return p.textContent.startsWith("•") || p.textContent.startsWith("*") || p.textContent.startsWith("✔️") || p.textContent.startsWith("✅") || p.textContent.startsWith("-") || p.textContent.startsWith("·");
     });
-    const listItems = Array.from(document.querySelectorAll("li"));
+    const listItems = Array.from(document.querySelectorAll("li, strong"));
 
     const arr = [...listItems, ...paras];
 
@@ -52,7 +52,8 @@ const yoe_check = () => {
         const cleaned = element.textContent
             .trim();
         
-        if ((rgx.test(cleaned) || cleaned.toLowerCase().includes("degree")) && !false_positives.some(word => cleaned.toLowerCase().includes(word))) {
+            // might need to make it select the job description box instead of the entire page
+        if ((rgx.test(cleaned) || cleaned.toLowerCase().includes("degree") || cleaned.toLowerCase().includes("student")) && !false_positives.some(word => cleaned.toLowerCase().includes(word))) {
             matches.add(cleaned);
         }
     }
