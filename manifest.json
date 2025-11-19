@@ -10,7 +10,9 @@
     "content_scripts": [
         {
             "matches": [
-                "*://www.linkedin.com/jobs/search-results/*"
+                "*://www.linkedin.com/jobs/search-results/*",
+                "*://www.linkedin.com/jobs/collections/*",
+                "*://www.linkedin.com/jobs/search/*"
             ],
             "js": [
                 "content.js"
