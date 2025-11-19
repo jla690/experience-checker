@@ -13,7 +13,7 @@ When browsing job postings it's easy to miss or misread experience and education
 - Lightweight, client-side extraction (runs in your browser)
 
 ## How it works (high level)
-A content script scans the job posting text and applies heuristics and regular expressions to find common patterns for experience and education. Results are shown in a small popup and — when available — highlighted in the page.
+A content script scans the job posting text and applies heuristics and regular expressions to find common patterns for experience and education. Results are appended as badges to the page near matching text.
 
 ## Supported / Tested Sites
 Common job boards and company career pages. Behavior will vary by site layout and text; if a site doesn't work well the extension will still attempt extraction from the visible text.
