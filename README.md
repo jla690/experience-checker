@@ -23,13 +23,9 @@ To load the extension locally in Chrome/Edge:
 
 1. Clone this repository:
    git clone https://github.com/jla690/experience-checker.git
-2. Install dependencies (if the project uses npm/yarn):
-   npm install
-3. Build (if applicable):
-   npm run build
-4. Open Chrome and go to chrome://extensions
-5. Enable "Developer mode" (top-right)
-6. Click "Load unpacked" and select the extension folder (the folder containing manifest.json — often `dist/` or the project root)
+2. Open Chrome and go to chrome://extensions
+3. Enable "Developer mode" (top-right)
+4. Click "Load unpacked" and select the extension folder (the folder containing manifest.json — usually the project root)
 
 If the extension is published in the Chrome Web Store, install it directly from there.
 
