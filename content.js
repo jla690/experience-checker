@@ -16,7 +16,7 @@ const false_positives = [
   "allowance",
   "pension",
 ];
-let prev_description = [];
+let prev_description = "";
 
 const createBadge = (text) => {
   const badge = document.createElement("div");
