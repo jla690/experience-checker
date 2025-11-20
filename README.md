@@ -36,5 +36,8 @@ If the extension is published in the Chrome Web Store, install it directly from 
    - Extracted "Degree requirements" (list of detected degrees)
 3. If results are missing or look wrong, try refreshing the page.
 
+## Language Support
+Currently only English is supported.
+
 ## Privacy
 All extraction runs locally in your browser. The extension does not send page content to external servers.
