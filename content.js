@@ -4,6 +4,9 @@ let timer = null;
 
 const false_positives = [
   "benefits",
+  "benefit",
+  "health",
+  "wellness",
   "perks",
   "vacation",
   "maternity",
@@ -82,8 +85,7 @@ const yoe_check = () => {
     // might need to make it select the job description box instead of the entire page
     if (
       (rgx.test(cleaned) ||
-        cleaned.toLowerCase().includes("degree") ||
-        cleaned.toLowerCase().includes("student")) &&
+        cleaned.toLowerCase().includes("degree")) &&
       !false_positives.some((word) => cleaned.toLowerCase().includes(word))
     ) {
       matches.add(cleaned);
