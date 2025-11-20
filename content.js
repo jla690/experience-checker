@@ -2,6 +2,25 @@ const rgx =
   /\b(?:\d+\+?|one|two|three|four|five|six|seven|eight|nine|ten)\s+(?:\w+\s+){0,2}?years?\b/i;
 let timer = null;
 
+const education_words = [
+  "bachelor",
+  "master",
+  "bachelor's",
+  "master's",
+  "phd",
+  "university",
+  "college",
+  "associate",
+  "bs ",
+  "ba ",
+  "ms ",
+  "b.sc",
+  "b.sc.",
+  "m.sc.",
+  "m.sc",
+  "undergraduate",
+];
+
 const false_positives = [
   "benefits",
   "benefit",
@@ -16,7 +35,15 @@ const false_positives = [
   "allowance",
   "pension",
 ];
+
 let prev_description = "";
+
+const checkEducation = (text) => {
+  return (
+    education_words.some((w) => text.includes(w)) &&
+    (text.includes("degree") || text.includes("diploma"))
+  );
+};
 
 const createBadge = (text) => {
   const badge = document.createElement("div");
@@ -82,10 +109,8 @@ const yoe_check = () => {
   for (const element of arr) {
     const cleaned = element.textContent.trim();
 
-    // might need to make it select the job description box instead of the entire page
     if (
-      (rgx.test(cleaned) ||
-        cleaned.toLowerCase().includes("degree")) &&
+      (rgx.test(cleaned) || checkEducation(cleaned.toLowerCase())) &&
       !false_positives.some((word) => cleaned.toLowerCase().includes(word))
     ) {
       matches.add(cleaned);
