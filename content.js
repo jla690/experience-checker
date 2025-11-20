@@ -43,16 +43,22 @@ const createBadge = (text) => {
 };
 
 const yoe_check = () => {
-  const title = document.querySelector("h1");
-
-  if (prev_description === document.querySelectorAll("li")) {
+  const description_arr = document.getElementsByClassName("jobs-details");
+  if (description_arr.length === 0) {
     return;
   }
-  prev_description = document.querySelectorAll("li");
+  const description = description_arr[0];
 
-  document.querySelectorAll(".yoe-badge").forEach((b) => b.remove());
+  const title = description.querySelector("h1");
+
+  if (prev_description === description.textContent) {
+    return;
+  }
+  prev_description = description.textContent;
+
+  description.querySelectorAll(".yoe-badge").forEach((b) => b.remove());
   let matches = new Set();
-  const paras = Array.from(document.querySelectorAll("p")).filter((p) => {
+  const paras = Array.from(description.querySelectorAll("p")).filter((p) => {
     return (
       p.textContent.startsWith("•") ||
       p.textContent.startsWith("*") ||
@@ -62,9 +68,9 @@ const yoe_check = () => {
       p.textContent.startsWith("·")
     );
   });
-  const listItems = Array.from(document.querySelectorAll("li"));
+  const listItems = Array.from(description.querySelectorAll("li"));
 
-  const strongItems = Array.from(document.querySelectorAll("strong")).filter(
+  const strongItems = Array.from(description.querySelectorAll("strong")).filter(
     (s) => !s.closest("li")
   );
 
