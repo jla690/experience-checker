@@ -1,7 +1,8 @@
-
 # Experience Checker
 
 Chrome extension that extracts years-of-experience and degree requirements from job postings to help quickly evaluate listings.
+
+![example](./docs/blurred.png)
 
 ## Why this exists
 When browsing job postings on LinkedIn, it can be time consuming to read through an entire job posting only to realize that you do not meet the required YOE or degree. This extension helps quickly show the YOE and degree requirements in badges at the top of the job posting, right under the job title.
