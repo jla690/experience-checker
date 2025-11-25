@@ -34,6 +34,8 @@ const false_positives = [
   "401k",
   "allowance",
   "pension",
+  "salary",
+  "acknowledgement"
 ];
 
 let prev_description = "";
