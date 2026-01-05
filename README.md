@@ -22,7 +22,7 @@ When browsing job postings on LinkedIn, it can be time consuming to read through
 A content script scans the job posting text and applies regular expressions to find common patterns for experience and education. It then filters out false positives that often have years associated with them (e.g., "Benefits", "Vacation", "Pension"). Results are appended as badges to the page near matching text.
 
 ## Supported / Tested Sites
-Currently supports LinkedIn
+Currently supports LinkedIn on the normal search (Not the new AI job search feature).
 
 ## Installation (developer / local)
 To load the extension locally in Chrome/Edge:
