@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "YOE Checker for LinkedIn",
   "version": "1.0",
-  "description": "Extracts years of experience from LinkedIn job posts",
+  "description": "Extracts years of experience from LinkedIn job posts. This extension is not affiliated with LinkedIn.",
   "permissions": ["activeTab", "scripting"],
   "content_scripts": [
     {
